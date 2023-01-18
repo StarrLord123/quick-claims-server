@@ -12,4 +12,6 @@ public interface ClaimService {
     public Claim getById(Integer id) throws ClaimNotFoundException;
 
     public List<Claim> getByInsuranceType(String insuranceType);
+
+    public List<Claim> getByStatus(String status);
 }
