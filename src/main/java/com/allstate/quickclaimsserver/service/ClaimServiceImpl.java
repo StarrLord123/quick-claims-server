@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -43,5 +44,22 @@ public class ClaimServiceImpl implements ClaimService{
         return claimRepository.findAllByStatus(status);
     }
 
+    @Override
+    public Claim saveClaim(Claim claim) {
+        return claimRepository.save(claim);
+    }
+
+    @Override
+    public Claim updateClaim(Integer id, Map<String, Object> fields) {
+        Claim claim = claimRepository.findById(id).get();
+
+        if (fields.containsKey("amount")) {
+            //any logic eg is amount > 0?
+            claim.setAmount(Double.parseDouble(fields.get("amount").toString()));
+        }
+
+        //save and return the payment
+        return claimRepository.save(claim);
+    }
 
 }

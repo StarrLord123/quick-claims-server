@@ -2,6 +2,7 @@ package com.allstate.quickclaimsserver.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -11,7 +12,7 @@ public class Claim {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer policyNumber;
-    private Date date;
+    private LocalDate date;
     private String insuranceType;
     private String title;
     private String forename;
@@ -27,7 +28,7 @@ public class Claim {
     private String animalType;
     private String animalBreed;
 
-    public Claim(Integer id, Integer policyNumber, Date date, String insuranceType, String title, String forename, String surname, Double amount, String reason, String updates, String status, String propertyAddress, String vehicleMake, String vehicleModel, String vehicleYear, String animalType, String animalBreed) {
+    public Claim(Integer id, Integer policyNumber, LocalDate date, String insuranceType, String title, String forename, String surname, Double amount, String reason, String updates, String status, String propertyAddress, String vehicleMake, String vehicleModel, String vehicleYear, String animalType, String animalBreed) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.date = date;
@@ -66,11 +67,11 @@ public class Claim {
         this.policyNumber = policyNumber;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
