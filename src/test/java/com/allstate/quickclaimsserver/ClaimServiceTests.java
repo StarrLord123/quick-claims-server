@@ -36,15 +36,29 @@ public class ClaimServiceTests {
     @Test
     public void testGetAllClaims() {
         List<Claim> claim = new ArrayList<>();
-        claim.add(new Claim(null, 101, LocalDate.of(2023, Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
-        claim.add(new Claim(null, 102, LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
-        claim.add(new Claim(null, 103, LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
-        claim.add(new Claim(null, 104, LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "101", LocalDate.of(2023, Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "102", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "103", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "104", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
 
         Mockito.when(claimRepository.findAll()).thenReturn(claim);
 
         List<Claim> claims = claimService.getAllClaims();
-        assertEquals(4, claim.size());
+        assertEquals(4, claims.size());
+    }
+
+    @Test
+    public void testGetAllUpdates() {
+        List<Claim> claim = new ArrayList<>();
+        claim.add(new Claim(null, "101", LocalDate.of(2023, Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "102", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "Assessed", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "103", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "Rejected", "Open", "1 Fake Street", "", "", "", "", ""));
+        claim.add(new Claim(null, "104", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", ""));
+
+        Mockito.when(claimRepository.findAll()).thenReturn(claim);
+
+        List<String> claims = claimService.getAllUpdates();
+        assertEquals(3, claims.size());
     }
 
 }

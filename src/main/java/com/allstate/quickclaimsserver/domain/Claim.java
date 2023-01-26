@@ -11,7 +11,7 @@ public class Claim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer policyNumber;
+    private String policyNumber;
     private LocalDate date;
     private String insuranceType;
     private String title;
@@ -28,7 +28,7 @@ public class Claim {
     private String animalType;
     private String animalBreed;
 
-    public Claim(Integer id, Integer policyNumber, LocalDate date, String insuranceType, String title, String forename, String surname, Double amount, String reason, String updates, String status, String propertyAddress, String vehicleMake, String vehicleModel, String vehicleYear, String animalType, String animalBreed) {
+    public Claim(Integer id, String policyNumber, LocalDate date, String insuranceType, String title, String forename, String surname, Double amount, String reason, String updates, String status, String propertyAddress, String vehicleMake, String vehicleModel, String vehicleYear, String animalType, String animalBreed) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.date = date;
@@ -59,11 +59,11 @@ public class Claim {
         this.id = id;
     }
 
-    public Integer getPolicyNumber() {
+    public String getPolicyNumber() {
         return policyNumber;
     }
 
-    public void setPolicyNumber(Integer policyNumber) {
+    public void setPolicyNumber(String policyNumber) {
         this.policyNumber = policyNumber;
     }
 
