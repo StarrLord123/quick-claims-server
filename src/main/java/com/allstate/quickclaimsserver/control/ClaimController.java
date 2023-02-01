@@ -43,7 +43,9 @@ public class ClaimController {
     }
 
     @PutMapping("/{id}")
-    public Claim updatePayment(@PathVariable Integer id, @RequestBody HashMap<String, Object> fields) {
+    public Claim updateClaim(@PathVariable Integer id, @RequestBody HashMap<String, Object> fields) {
+        System.out.println(id);
+        System.out.println(fields);
         return claimService.updateClaim(id, fields);
     }
 }

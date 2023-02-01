@@ -6,6 +6,7 @@ import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -67,12 +68,73 @@ public class ClaimServiceImpl implements ClaimService{
     public Claim updateClaim(Integer id, Map<String, Object> fields) {
         Claim claim = claimRepository.findById(id).get();
 
+        //update those fields that have changed
+
+        if (fields.containsKey("policyNumber")) {
+            claim.setPolicyNumber(fields.get("policyNumber").toString());
+        }
+
+        if (fields.containsKey("date")) {
+            claim.setDate(LocalDate.parse(fields.get("date").toString()));
+        }
+
+        if (fields.containsKey("forename")) {
+            claim.setForename(fields.get("forename").toString());
+        }
+
+        if (fields.containsKey("surname")) {
+            claim.setSurname(fields.get("surname").toString());
+        }
+
+        if (fields.containsKey("insuranceType")) {
+            claim.setInsuranceType(fields.get("insuranceType").toString());
+        }
+
+        if (fields.containsKey("propertyAddress")) {
+            claim.setPropertyAddress(fields.get("propertyAddress").toString());
+        }
+
+        if (fields.containsKey("vehicleMake")) {
+            claim.setVehicleMake(fields.get("vehicleMake").toString());
+        }
+
+        if (fields.containsKey("vehicleModel")) {
+            claim.setVehicleModel(fields.get("vehicleModel").toString());
+        }
+
+        if (fields.containsKey("vehicleYear")) {
+            claim.setVehicleYear(fields.get("vehicleYear").toString());
+        }
+
+        if (fields.containsKey("insuranceType")) {
+            claim.setInsuranceType(fields.get("insuranceType").toString());
+        }
+
+        if (fields.containsKey("animalType")) {
+            claim.setAnimalType(fields.get("animalType").toString());
+        }
+
+        if (fields.containsKey("animalBreed")) {
+            claim.setAnimalBreed(fields.get("animalBreed").toString());
+        }
+
         if (fields.containsKey("amount")) {
-            //any logic eg is amount > 0?
             claim.setAmount(Double.parseDouble(fields.get("amount").toString()));
         }
 
-        //save and return the payment
+        if (fields.containsKey("reason")) {
+            claim.setReason(fields.get("reason").toString());
+        }
+
+        if (fields.containsKey("updates")) {
+            claim.setUpdates(fields.get("updates").toString());
+        }
+
+        System.out.println(id);
+        System.out.println(fields);
+        System.out.println(claim);
+
+        //save and return the claim
         return claimRepository.save(claim);
     }
 
