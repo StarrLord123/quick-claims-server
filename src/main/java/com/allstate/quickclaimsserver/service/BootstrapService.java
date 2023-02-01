@@ -38,7 +38,7 @@ public class BootstrapService {
             Claim newClaim6 = new Claim(null, "106", LocalDate.of(2023,Month.JANUARY,01), "Pet", "Ms", "Francine", "Jones", 100.00, "Pet hurt leg", "rejected", "Closed", "", "", "", "", "Cat", "Tabby");
             Claim savedClaim6 = claimRepository.save(newClaim6);
 
-            Claim newClaim7 = new Claim(null, "107", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "Harold", "Garcia", 1000.00, "House burnt down", "high value", "Closed", "3 Fake Street", "", "", "", "", "");
+            Claim newClaim7 = new Claim(null, "107", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "Harold", "Garcia", 1000.00, "House burnt down", "high value", "Open", "3 Fake Street", "", "", "", "", "");
             Claim savedClaim7 = claimRepository.save(newClaim7);
 
             Claim newClaim8 = new Claim(null, "108", LocalDate.of(2023,Month.JANUARY,01), "Motor", "Ms", "Jane", "Miller", 100.00, "Car broke down", "assessed", "Open", "", "Volkswagen", "Golf", "2020", "", "");
