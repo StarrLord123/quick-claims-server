@@ -11,15 +11,15 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/updates")
-public class UpdatesController {
+@RequestMapping("/api/status")
+public class StatusController {
 
     @Autowired
     private ClaimService claimService;
 
     @GetMapping()
-    public List<String> getAllUpdates() {
-        return claimService.getAllUpdates();
+    public List<String> getAllStatuses() {
+        return claimService.getAllStatuses();
     }
 
 }

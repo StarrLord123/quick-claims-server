@@ -19,12 +19,12 @@ public class ClaimController {
 
     @GetMapping()
     public List<Claim> getAllClaims(@RequestParam(value="policyNumber", required = false) String policyNumber,
-                                    @RequestParam(value="updates", required = false) String updates) {
+                                    @RequestParam(value="status", required = false) String status) {
         if (policyNumber != null) {
             return claimService.getByPolicyNumber(policyNumber);
         }
-        else if (updates != null) {
-            return claimService.getByUpdates(updates);
+        else if (status != null) {
+            return claimService.getByStatus(status);
         }
         else {
             return claimService.getAllClaims();

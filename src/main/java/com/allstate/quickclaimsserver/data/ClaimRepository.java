@@ -11,6 +11,6 @@ import java.util.List;
 public interface ClaimRepository extends JpaRepository<Claim, Integer> {
 
     public List<Claim> findAllByInsuranceType(String insuranceType);
-    public List<Claim> findAllByUpdates(String updates);
+    public List<Claim> findAllByStatus(String status);
     public List<Claim> findAllByPolicyNumber(String policyNumber);
 }

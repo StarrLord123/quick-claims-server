@@ -47,14 +47,14 @@ public class ClaimServiceImpl implements ClaimService{
     }
 
     @Override
-    public List<Claim> getByUpdates(String updates) {
-        return claimRepository.findAllByUpdates(updates);
+    public List<Claim> getByStatus(String status) {
+        return claimRepository.findAllByStatus(status);
     }
 
     @Override
-    public List<String> getAllUpdates() {
+    public List<String> getAllStatuses() {
         return claimRepository.findAll().stream()
-                .map(claim -> claim.getUpdates().toLowerCase())
+                .map(claim -> claim.getStatus().toLowerCase())
                 .distinct()
                 .collect(Collectors.toList());
     }
@@ -128,6 +128,10 @@ public class ClaimServiceImpl implements ClaimService{
 
         if (fields.containsKey("updates")) {
             claim.setUpdates(fields.get("updates").toString());
+        }
+
+        if (fields.containsKey("status")) {
+            claim.setStatus(fields.get("status").toString());
         }
 
         System.out.println(id);
