@@ -1,5 +1,8 @@
 package com.allstate.quickclaimsserver.service;
 
+import com.allstate.quickclaimsserver.data.UserRepository;
+import com.allstate.quickclaimsserver.domain.User;
+import com.allstate.quickclaimsserver.domain.UserRole;
 import com.allstate.quickclaimsserver.data.ClaimRepository;
 import com.allstate.quickclaimsserver.domain.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,22 @@ public class BootstrapService {
 
     @Autowired
     private ClaimRepository claimRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @PostConstruct
+    public void createInitialUsers(){
+        if (userRepository.count() == 0) {
+            User user1 = new User("david", "David", "pass1", UserRole.USER);
+            User user2 = new User("sarah", "Sarah", "pass1", UserRole.MANAGER);
+            userService.save(user1);
+            userService.save(user2);
+        }
+    }
 
     @PostConstruct
     public void setUpInitialData() {
