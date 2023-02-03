@@ -3,6 +3,8 @@ package com.allstate.quickclaimsserver.domain;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -215,7 +217,8 @@ public class Claim {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claim claim = (Claim) o;
-        return Objects.equals(id, claim.id) && Objects.equals(policyNumber, claim.policyNumber) && Objects.equals(date, claim.date) && Objects.equals(insuranceType, claim.insuranceType) && Objects.equals(title, claim.title) && Objects.equals(forename, claim.forename) && Objects.equals(surname, claim.surname) && Objects.equals(amount, claim.amount) && Objects.equals(reason, claim.reason) && Objects.equals(updates, claim.updates) && Objects.equals(status, claim.status) && Objects.equals(propertyAddress, claim.propertyAddress) && Objects.equals(vehicleMake, claim.vehicleMake) && Objects.equals(vehicleModel, claim.vehicleModel) && Objects.equals(vehicleYear, claim.vehicleYear) && Objects.equals(animalType, claim.animalType) && Objects.equals(animalBreed, claim.animalBreed);
+        return Objects.equals(id, claim.id) && Objects.equals(policyNumber, claim.policyNumber) && Objects.equals(date, claim.date) && Objects.equals(insuranceType, claim.insuranceType) && Objects.equals(title, claim.title) && Objects.equals(forename, claim.forename) && Objects.equals(surname, claim.surname) && Objects.equals(amount, claim.amount) && Objects.equals(reason, claim.reason) && Objects.equals(updates, claim.updates)
+                && Objects.equals(status, claim.status) && Objects.equals(propertyAddress, claim.propertyAddress) && Objects.equals(vehicleMake, claim.vehicleMake) && Objects.equals(vehicleModel, claim.vehicleModel) && Objects.equals(vehicleYear, claim.vehicleYear) && Objects.equals(animalType, claim.animalType) && Objects.equals(animalBreed, claim.animalBreed);
     }
 
     @Override

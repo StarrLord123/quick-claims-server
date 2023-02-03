@@ -20,7 +20,7 @@ public interface ClaimService {
 
     public List<Claim> getByStatus(String status);
 
-    public Claim saveClaim(Claim payment);
+    public Claim saveClaim(Claim claim);
 
     public Claim updateClaim(Integer id, Map<String, Object> fields);
 }

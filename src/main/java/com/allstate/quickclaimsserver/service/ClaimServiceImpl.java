@@ -21,7 +21,7 @@ public class ClaimServiceImpl implements ClaimService{
     @Override
     public List<Claim> getAllClaims() {
         List<Claim> claims = claimRepository.findAll();
-        System.out.println("There were " + claims.size() + " found");
+        System.out.println("There were " + claims.size() + " claims found");
         return claims;
     }
 
@@ -32,7 +32,7 @@ public class ClaimServiceImpl implements ClaimService{
             return optionalClaim.get();
         }
         else {
-            throw new ClaimNotFoundException("There is no payment with id " + id);
+            throw new ClaimNotFoundException("There is no claim with id " + id);
         }
     }
 

@@ -1,10 +1,13 @@
 package com.allstate.quickclaimsserver.service;
 
+import com.allstate.quickclaimsserver.data.NoteRepository;
 import com.allstate.quickclaimsserver.data.UserRepository;
+import com.allstate.quickclaimsserver.domain.Note;
 import com.allstate.quickclaimsserver.domain.User;
 import com.allstate.quickclaimsserver.domain.UserRole;
 import com.allstate.quickclaimsserver.data.ClaimRepository;
 import com.allstate.quickclaimsserver.domain.Claim;
+import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,9 @@ public class BootstrapService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private NoteRepository noteRepository;
 
     @Autowired
     private UserService userService;
@@ -68,6 +74,18 @@ public class BootstrapService {
 
             Claim newClaim10 = new Claim(null, "110", LocalDate.of(2023,Month.JANUARY,01), "Property", "Ms", "Laura", "Stephens", 100.00, "House burnt down", "This claim has been paid", "accepted - paid", "4 Fake Street", "", "", "", "", "");
             Claim savedClaim10 = claimRepository.save(newClaim10);
+        }
+    }
+
+    @PostConstruct
+    public void createInitialNotes() throws ClaimNotFoundException {
+        int numberOfNotes = noteRepository.findAll().size();
+        if (numberOfNotes == 0) {
+            Claim claim1 = claimRepository.findById(1).orElseThrow(() -> new ClaimNotFoundException("Claim not found"));
+            Note note1 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
+            Note note2 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
+            noteRepository.save(note1);
+            noteRepository.save(note2);
         }
     }
 

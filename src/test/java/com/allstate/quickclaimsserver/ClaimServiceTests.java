@@ -1,8 +1,12 @@
 package com.allstate.quickclaimsserver;
 
 import com.allstate.quickclaimsserver.data.ClaimRepository;
+import com.allstate.quickclaimsserver.data.NoteRepository;
+import com.allstate.quickclaimsserver.data.UserRepository;
 import com.allstate.quickclaimsserver.domain.Claim;
+import com.allstate.quickclaimsserver.service.BootstrapService;
 import com.allstate.quickclaimsserver.service.ClaimService;
+import com.allstate.quickclaimsserver.service.NoteService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -30,8 +34,20 @@ public class ClaimServiceTests {
     @Autowired
     private ClaimService claimService;
 
+    @Autowired
+    private NoteService noteService;
+
+    @MockBean
+    private BootstrapService bootstrapService;
+
     @MockBean
     private ClaimRepository claimRepository;
+
+    @MockBean
+    private UserRepository userRepository;
+
+    @MockBean
+    private NoteRepository noteRepository;
 
     @Test
     public void testGetAllClaims() {
