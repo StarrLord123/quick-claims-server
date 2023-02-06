@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,15 +56,18 @@ public class NoteServiceTests {
     public void testGetAllNotesForClaim() throws ClaimNotFoundException {
 
         Claim claim1 = new Claim(1, "101", LocalDate.of(2023, Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "Open", "1 Fake Street", "", "", "", "", "");
-        claimRepository.save(claim1);
+        Mockito.when(claimRepository.findById(1)).thenReturn(Optional.of(claim1));
 
         Note note1 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
         Note note2 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
 
-        noteRepository.save(note1);
-        noteRepository.save(note2);
+        List<Note> notes = new ArrayList<>();
+        notes.add(note1);
+        notes.add(note2);
 
-        List<Note> notes = noteService.getAllNotesForClaim(1);
-        assertEquals(2, notes.size());
+        Mockito.when(noteRepository.findAllByClaimId(1)).thenReturn(notes);
+
+        List<Note> returnedNotes = noteService.getAllNotesForClaim(1);
+        assertEquals(2, returnedNotes.size());
     }
 }

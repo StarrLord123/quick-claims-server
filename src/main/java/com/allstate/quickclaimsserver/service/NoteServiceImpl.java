@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -55,6 +56,16 @@ public class NoteServiceImpl implements NoteService{
     @Override
     public Note saveNote(Note note) {
         return noteRepository.save(note);
+    }
+
+    @Override
+    public List<Note> saveNotes(Integer claimId, List<Note> notes) {
+        List<Note> savedNotes = new ArrayList<>();
+        for (Note note : notes) {
+            note.setClaimId(claimId);
+            savedNotes.add(noteRepository.save(note));
+        }
+        return savedNotes;
     }
 
     @Override

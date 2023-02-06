@@ -18,5 +18,7 @@ public interface NoteService {
 
     public Note saveNote(Note note);
 
+    public List<Note> saveNotes(Integer claimId, List<Note> notes);
+
     public Note updateNote(Integer id, Map<String, Object> fields);
 }

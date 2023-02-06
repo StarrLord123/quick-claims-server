@@ -5,6 +5,7 @@ import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import com.allstate.quickclaimsserver.exceptions.NoteNotFoundException;
 import com.allstate.quickclaimsserver.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -28,10 +29,16 @@ public class NoteController {
         return noteService.getById(id);
     }
 
+//    @PostMapping
+//    public Note saveNewNote(@RequestBody Note note) {
+//        System.out.println(note);
+//        return noteService.saveNote(note);
+//    }
+
     @PostMapping
-    public Note saveNewNote(@RequestBody Note note) {
-        System.out.println(note);
-        return noteService.saveNote(note);
+    public ResponseEntity<List<Note>> saveNotes(@PathVariable Integer claimId, @RequestBody List<Note> notes) {
+        List<Note> savedNotes = noteService.saveNotes(claimId, notes);
+        return ResponseEntity.ok(savedNotes);
     }
 
     @PutMapping("/{id}")

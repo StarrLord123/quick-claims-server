@@ -38,7 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/claim/**")
                 .hasAnyRole("USER", "MANAGER")
 
+                .antMatchers(HttpMethod.GET, "/api/claim?policyNumber=**")
+                .hasAnyRole("USER", "MANAGER")
+
                 .antMatchers(HttpMethod.GET, "/api/claim/**/Notes/**")
+                .hasAnyRole("USER", "MANAGER")
+
+                .antMatchers(HttpMethod.POST, "/api/claim/**/Notes/**")
                 .hasAnyRole("USER", "MANAGER")
 
                 .antMatchers(HttpMethod.GET, "/api/claim/**/Notes/")

@@ -82,10 +82,13 @@ public class BootstrapService {
         int numberOfNotes = noteRepository.findAll().size();
         if (numberOfNotes == 0) {
             Claim claim1 = claimRepository.findById(1).orElseThrow(() -> new ClaimNotFoundException("Claim not found"));
-            Note note1 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
-            Note note2 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is a note", 1);
+            Claim claim3 = claimRepository.findById(3).orElseThrow(() -> new ClaimNotFoundException("Claim not found"));
+            Note note1 = new Note(null, "Completed", LocalDate.of(2023,Month.JANUARY,01), "This is note 1 for Claim 1", 1);
+            Note note2 = new Note(null, "Not Completed", LocalDate.of(2023,Month.JANUARY,02), "This is note 2 for Claim 1", 1);
+            Note note3 = new Note(null, "Not Completed", LocalDate.of(2023,Month.JANUARY,02), "This is note 1 for Claim 3", 3);
             noteRepository.save(note1);
             noteRepository.save(note2);
+            noteRepository.save(note3);
         }
     }
 

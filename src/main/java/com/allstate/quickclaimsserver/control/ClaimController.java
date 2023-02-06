@@ -20,6 +20,9 @@ public class ClaimController {
     @GetMapping()
     public List<Claim> getAllClaims(@RequestParam(value="policyNumber", required = false) String policyNumber,
                                     @RequestParam(value="status", required = false) String status) {
+
+        System.out.println(policyNumber);
+
         if (policyNumber != null) {
             return claimService.getByPolicyNumber(policyNumber);
         }
@@ -29,6 +32,7 @@ public class ClaimController {
         else {
             return claimService.getAllClaims();
         }
+
     }
 
     @GetMapping("/{id}")
