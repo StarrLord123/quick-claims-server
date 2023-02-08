@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasAnyRole("USER", "MANAGER")
 
                 .antMatchers(HttpMethod.POST, "/api/claim/**/Notes/**")
-                .hasAnyRole("USER", "MANAGER")
+                .hasRole("MANAGER")
 
                 .antMatchers(HttpMethod.GET, "/api/claim/**/Notes/")
                 .hasAnyRole("USER", "MANAGER")
@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.POST, "/api/claim/**")
                 .hasRole("MANAGER")
+
                 .and().csrf().disable()
                 .httpBasic();
     }
