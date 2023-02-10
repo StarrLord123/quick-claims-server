@@ -59,6 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/claim/**")
                 .hasRole("MANAGER")
 
+                .antMatchers(HttpMethod.PUT, "/api/claim/**")
+                .hasRole("MANAGER")
+
                 .and().csrf().disable()
                 .httpBasic();
     }

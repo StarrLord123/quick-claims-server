@@ -64,7 +64,7 @@ public class ClaimServiceTests {
     }
 
     @Test
-    public void testGetAllUpdates() {
+    public void testGetAllStatuses() {
         List<Claim> claim = new ArrayList<>();
         claim.add(new Claim(null, "101", LocalDate.of(2023, Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "New Claim", "new claim", "1 Fake Street", "", "", "", "", ""));
         claim.add(new Claim(null, "102", LocalDate.of(2023,Month.JANUARY,01), "Property", "Mr", "John", "Smith", 100.00, "House burnt down", "Assessed", "assessed", "1 Fake Street", "", "", "", "", ""));
